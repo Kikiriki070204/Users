@@ -1,0 +1,47 @@
+package com.example.examenprueba1.adapters;
+
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.examenprueba1.listeners.UserListener;
+import com.example.examenprueba1.models.UserModel;
+
+import java.util.List;
+
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
+
+    public List <UserModel> usersList;
+    private UserListener userListener;
+
+    public UserAdapter(List<UserModel> usersList, UserListener userListener){
+        this.usersList = usersList;
+        this.userListener = userListener;
+    }
+
+
+    @NonNull
+    @Override
+    public UserAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+    }
+}
