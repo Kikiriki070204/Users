@@ -8,25 +8,22 @@ import com.example.examenprueba1.models.Result;
 import com.example.examenprueba1.repository.ResultRepo;
 
 public class result_viewmodel extends ViewModel {
-    private MutableLiveData<Result> resultModel;
-    private ResultRepo resultRepo;
+    private MutableLiveData<Result> resultModel = new MutableLiveData<>();
+    private ResultRepo resultRepo = new ResultRepo();
 
-    public LiveData<Result> getUsers()
-    {
-        if (resultModel == null)
-        {
-            resultModel=new MutableLiveData<>();
-            results();
-        }
-        return resultModel;
-    }
 
-    private void results()
-    {
-        if(resultRepo == null)
-        {
-            resultRepo=new ResultRepo();
+         public LiveData<Result> getUsers() {
+                return resultModel;
+         }
+        public void results() {
+        resultRepo.getResults(null).observeForever(result -> {
+        resultModel.setValue(result);
+        });
         }
-        resultModel = resultRepo.getResults();
-    }
+
+        public void resultsByGender(String gender){
+            resultRepo.getResults(gender).observeForever(result -> {
+                resultModel.setValue(result);
+            });
+        }
 }

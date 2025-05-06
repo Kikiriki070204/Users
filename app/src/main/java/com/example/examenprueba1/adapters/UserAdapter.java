@@ -74,4 +74,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         }
     }
+
+    public void update(List<UserModel> users)
+    {
+        usersList = users;
+        notifyDataSetChanged();
+    }
 }

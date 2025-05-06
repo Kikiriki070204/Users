@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import com.example.examenprueba1.adapters.UserAdapter;
 import com.example.examenprueba1.listeners.UserListener;
@@ -22,29 +23,44 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements UserListener {
     RecyclerView recycler;
+    Button female_filter, male_filter, reset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recyclerView);
+        female_filter = findViewById(R.id.females);
+        male_filter = findViewById(R.id.males);
+        reset = findViewById(R.id.reset);
 
+
+        UserAdapter userAdapter = new UserAdapter(new ArrayList<>(), this);
         ViewModelProvider viewModelProvider = new ViewModelProvider(this);
         result_viewmodel resultViewModel = viewModelProvider.get(result_viewmodel.class);
 
-        resultViewModel.getUsers().observe(this, new Observer<Result>() {
-            @Override
-            public void onChanged(Result result) {
-                if (result != null)
-                {
-                    recycler.setAdapter(new UserAdapter(result.results,MainActivity.this ));
-                    recycler.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    recycler.setHasFixedSize(true);
-                }
-            }
+        recycler.setAdapter(userAdapter);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setHasFixedSize(true);
+
+        resultViewModel.results();
+
+        female_filter.setOnClickListener(v -> {
+            resultViewModel.resultsByGender("female");
+        });
+        male_filter.setOnClickListener(v -> {
+            resultViewModel.resultsByGender("male");
+        });
+        reset.setOnClickListener(v -> {
+            resultViewModel.results();
         });
 
 
+        resultViewModel.getUsers().observe(this, result -> {
+            if (result != null ) {
+                userAdapter.update(result.getResults());
+            }
+        });
     }
 
     @Override

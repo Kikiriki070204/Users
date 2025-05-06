@@ -5,6 +5,7 @@ import com.example.examenprueba1.models.UserModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface users_request {
     @GET("?results=50")

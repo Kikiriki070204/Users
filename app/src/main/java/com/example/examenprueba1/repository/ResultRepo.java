@@ -12,17 +12,29 @@ import retrofit2.Retrofit;
 import com.example.examenprueba1.models.Result;
 import com.example.examenprueba1.retrofit.request;
 import com.example.examenprueba1.request.users_request;
+import com.example.examenprueba1.request.gender_request;
 
 public class ResultRepo {
 public Retrofit retrofit;
 void setRetrofit(){retrofit=request.getRetrofit();}
 
-    public MutableLiveData<Result> getResults()
+    public MutableLiveData<Result> getResults(String gender)
     {
         setRetrofit();
+        Call<Result> resultCall;
 
-        users_request usersRequest  = retrofit.create(users_request.class);
-        Call<Result> resultCall = usersRequest.getResults();
+        if(gender != null)
+        {
+            gender_request usersRequest  = retrofit.create(gender_request.class);
+            resultCall = usersRequest.getResults(50, gender);
+        }
+        else
+        {
+            users_request usersRequest  = retrofit.create(users_request.class);
+            resultCall = usersRequest.getResults();
+        }
+
+
         MutableLiveData<Result> mutable = new MutableLiveData<>();
         Log.d("Retrofit URL", resultCall.request().url().toString());
         Log.d("MUTABLE","Escuchando el request");
