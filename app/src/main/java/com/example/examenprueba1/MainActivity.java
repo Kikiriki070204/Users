@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.examenprueba1.adapters.UserAdapter;
 import com.example.examenprueba1.listeners.UserListener;
@@ -24,6 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements UserListener {
     RecyclerView recycler;
     Button female_filter, male_filter, reset;
+    TextView message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         female_filter = findViewById(R.id.females);
         male_filter = findViewById(R.id.males);
         reset = findViewById(R.id.reset);
+        message = findViewById(R.id.message);
 
 
         UserAdapter userAdapter = new UserAdapter(new ArrayList<>(), this);
@@ -59,6 +63,14 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         resultViewModel.getUsers().observe(this, result -> {
             if (result != null ) {
                 userAdapter.update(result.getResults());
+                message.setVisibility(View.GONE);
+            }
+            else
+            {
+
+                message.setText("No se encontraron resultados.");
+                message.setVisibility(View.VISIBLE);
+
             }
         });
     }
@@ -68,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         String street  = user.getLocation().getStreet().str() + ", " + user.getLocation().getCity();
         String stct = user.getLocation().getState() + ", " + user.getLocation().getCountry();
         String phone  = user.getPhone().toString();
-        String picture  =user.getPicture().getThumbnail();
+        String picture  =user.getPicture().getLarge();
 
         Intent data = new Intent(getApplicationContext(), UserData.class);
         data.putExtra("street", street);

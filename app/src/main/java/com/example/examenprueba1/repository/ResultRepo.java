@@ -49,6 +49,7 @@ void setRetrofit(){retrofit=request.getRetrofit();}
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
                 Log.d("NULO..","Aquí NO hay usuarios");
+                mutable.setValue(null);
             }
         });
 
