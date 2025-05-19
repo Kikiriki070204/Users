@@ -36,22 +36,24 @@
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+            <com.google.android.material.button.MaterialButton
                 style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/females"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mujeres"
                 />
-            <Button
+            <com.google.android.material.button.MaterialButton
                 style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/males"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hombres"
                 />
-            <Button
+            <com.google.android.material.button.MaterialButton
                 style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/reset"
                 android:layout_width="wrap_content"
