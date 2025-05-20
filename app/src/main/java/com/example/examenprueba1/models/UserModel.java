@@ -2,7 +2,7 @@ package com.example.examenprueba1.models;
 
 import java.util.List;
 
-public class UserModel {
+public class UserModel  {
 
     public static class Name {
         private String title;
@@ -28,8 +28,18 @@ public class UserModel {
     }
 
     public static class Coordinates {
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public String getLongitude() {
+            return longitude;
+        }
+
         private String latitude;
         private String longitude;
+
+
     }
 
     public static class Timezone {
@@ -97,6 +107,4 @@ public class UserModel {
             return "";
         }
     }
-
-
 }
