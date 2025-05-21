@@ -29,7 +29,6 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
-        back = findViewById(R.id.back);
         username = findViewById(R.id.edit_username);
         password = findViewById(R.id.edit_password);
         verify = findViewById(R.id.verify);
@@ -50,12 +49,6 @@ public class UserData extends AppCompatActivity {
 
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getOnBackPressedDispatcher().onBackPressed();
-            }
-        });
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
