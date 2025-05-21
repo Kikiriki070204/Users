@@ -27,6 +27,7 @@ public class UserData extends AppCompatActivity {
         back = findViewById(R.id.back);
 
 
+
         Intent i = getIntent();
         street.setText(i.getStringExtra("street"));
         state.setText(i.getStringExtra("stct"));
