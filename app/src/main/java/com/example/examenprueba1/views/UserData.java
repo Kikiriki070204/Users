@@ -24,10 +24,6 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
-        back = findViewById(R.id.back);
-
-
-
 
 
         Intent i = getIntent();
@@ -36,12 +32,6 @@ public class UserData extends AppCompatActivity {
         phone.setText(i.getStringExtra("phone"));
         picture = i.getStringExtra("picture");
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getOnBackPressedDispatcher().onBackPressed();
-            }
-        });
 
 
         Glide.with(this).load(picture).into(img);
