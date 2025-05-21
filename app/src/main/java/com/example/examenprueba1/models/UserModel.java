@@ -74,6 +74,19 @@ public class UserModel {
 
     }
 
+    public static class Login{
+        public String getUsername() {
+            return username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public String username;
+        public String password;
+    }
+
     private String gender;
     private Name name;
     private Location location;
@@ -81,6 +94,12 @@ public class UserModel {
     private Picture picture;
     private String phone;
     private String cell;
+
+    public Login getLogin() {
+        return login;
+    }
+
+    private Login login;
 
     public String getGender() { return gender; }
     public Name getName() { return name; }

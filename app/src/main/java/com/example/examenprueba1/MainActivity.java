@@ -81,12 +81,16 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         String stct = user.getLocation().getState() + ", " + user.getLocation().getCountry();
         String phone  = user.getPhone().toString();
         String picture  =user.getPicture().getLarge();
+        String username = user.getLogin().getUsername();
+        String password = user.getLogin().getPassword();
 
         Intent data = new Intent(getApplicationContext(), UserData.class);
         data.putExtra("street", street);
         data.putExtra("stct", stct);
         data.putExtra("phone", phone);
         data.putExtra("picture", picture);
+        data.putExtra("username", username);
+        data.putExtra("password", password);
         startActivity(data);
     }
 }
