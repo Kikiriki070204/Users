@@ -18,7 +18,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Más sobre este usuario:"
-
             android:textStyle="bold"
             android:textSize="27sp"
             android:layout_gravity="center"
