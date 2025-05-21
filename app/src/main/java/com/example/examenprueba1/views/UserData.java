@@ -36,6 +36,7 @@ public class UserData extends AppCompatActivity {
         error_username = findViewById(R.id.error_username);
         error_password = findViewById(R.id.error_password);
 
+
         Intent i = getIntent();
         street.setText(i.getStringExtra("street"));
         state.setText(i.getStringExtra("stct"));
