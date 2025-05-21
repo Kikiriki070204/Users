@@ -4,22 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.examenprueba1.R;
 
 public class UserData extends AppCompatActivity {
     TextView street, state, phone;
-    ImageView img;
-    String picture, latitude, longitude, city;
-
-    LinearLayout ubicacion;
+    ImageView img, back;
+    String picture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +35,8 @@ public class UserData extends AppCompatActivity {
         state.setText(i.getStringExtra("stct"));
         phone.setText(i.getStringExtra("phone"));
         picture = i.getStringExtra("picture");
-        latitude = i.getStringExtra("latitude");
-        longitude = i.getStringExtra("longitude");
-        city = i.getStringExtra("city");
 
-
-        ubicacion.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             String query = street.getText().toString();
