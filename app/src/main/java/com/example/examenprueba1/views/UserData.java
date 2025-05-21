@@ -27,7 +27,6 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
-        back = findViewById(R.id.back);
         contacto = findViewById(R.id.contact);
 
 
@@ -38,12 +37,6 @@ public class UserData extends AppCompatActivity {
         phone.setText(i.getStringExtra("phone"));
         picture = i.getStringExtra("picture");
         mensaje = i.getStringExtra("mensaje");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getOnBackPressedDispatcher().onBackPressed();
-            }
-        });
 
         contacto.setOnClickListener(new View.OnClickListener() {
             @Override
