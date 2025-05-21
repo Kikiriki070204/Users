@@ -44,11 +44,11 @@ public class UserData extends AppCompatActivity {
         longitude = i.getStringExtra("longitude");
         city = i.getStringExtra("city");
 
-      
+
         ubicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String query = street.getText().toString() + "," + city.toString();
+            String query = street.getText().toString();
                 Log.d("query: ", query);
             Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude + "?q=" + Uri.encode(query));
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
