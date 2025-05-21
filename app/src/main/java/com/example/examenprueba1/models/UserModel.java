@@ -98,5 +98,20 @@ public class UserModel {
         }
     }
 
+    public String userData(UserModel userModel)
+    {
+        UserModel user = userModel;
+
+        StringBuilder mensaje = new StringBuilder();
+        mensaje.append("¡Hola! Te comparto la información de este usuario:\n");
+        mensaje.append("\n");
+        mensaje.append("*Nombre:* ").append(user.getName().getFirst()).append(" ").append(user.getName().getLast()).append("\n");
+        mensaje.append("*Correo electrónico:* ").append(user.getEmail()).append("\n");
+        mensaje.append("*Teléfono:* ").append(user.getPhone()).append("\n");
+
+        return mensaje.toString();
+    }
+
+
 
 }
