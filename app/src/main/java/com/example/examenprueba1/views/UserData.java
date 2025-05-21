@@ -31,6 +31,7 @@ public class UserData extends AppCompatActivity {
         contacto = findViewById(R.id.contact);
 
 
+
         Intent i = getIntent();
         street.setText(i.getStringExtra("street"));
         state.setText(i.getStringExtra("stct"));
