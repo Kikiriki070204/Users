@@ -29,7 +29,6 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
-        back = findViewById(R.id.back);
 
         Intent i = getIntent();
         street.setText(i.getStringExtra("street"));
@@ -40,12 +39,7 @@ public class UserData extends AppCompatActivity {
         longitude = i.getStringExtra("longitude");
         city = i.getStringExtra("city");
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getOnBackPressedDispatcher().onBackPressed();
-            }
-        });
+
 
         ubicacion.setOnClickListener(new View.OnClickListener() {
             @Override
