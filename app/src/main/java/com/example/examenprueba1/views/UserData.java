@@ -16,7 +16,7 @@ import com.example.examenprueba1.R;
 
 public class UserData extends AppCompatActivity {
     TextView street, state, phone;
-    ImageView img, back;
+    ImageView img;
     String picture, latitude, longitude, city;
 
     LinearLayout ubicacion;
@@ -29,7 +29,6 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
-        back = findViewById(R.id.back);
         ubicacion = findViewById(R.id.ubicacion);
 
 
@@ -45,13 +44,7 @@ public class UserData extends AppCompatActivity {
         longitude = i.getStringExtra("longitude");
         city = i.getStringExtra("city");
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getOnBackPressedDispatcher().onBackPressed();
-            }
-        });
-
+      
         ubicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
