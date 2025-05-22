@@ -39,7 +39,6 @@ public class UserData extends AppCompatActivity {
             }
         });
 
-
         Glide.with(this).load(picture).into(img);
 
     }
