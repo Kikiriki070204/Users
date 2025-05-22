@@ -2,7 +2,7 @@ package com.example.examenprueba1.models;
 
 import java.util.List;
 
-public class UserModel  {
+public class UserModel {
 
     public static class Name {
         private String title;
@@ -38,8 +38,6 @@ public class UserModel  {
 
         private String latitude;
         private String longitude;
-
-
     }
 
     public static class Timezone {
@@ -107,4 +105,21 @@ public class UserModel  {
             return "";
         }
     }
+
+    public String userData(UserModel userModel)
+    {
+        UserModel user = userModel;
+
+        StringBuilder mensaje = new StringBuilder();
+        mensaje.append("¡Hola! Te comparto la información de este usuario:\n");
+        mensaje.append("\n");
+        mensaje.append("*Nombre:* ").append(user.getName().getFirst()).append(" ").append(user.getName().getLast()).append("\n");
+        mensaje.append("*Correo electrónico:* ").append(user.getEmail()).append("\n");
+        mensaje.append("*Teléfono:* ").append(user.getPhone()).append("\n");
+
+        return mensaje.toString();
+    }
+
+
+
 }

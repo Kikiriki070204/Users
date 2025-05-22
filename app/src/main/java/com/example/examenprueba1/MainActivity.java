@@ -143,6 +143,8 @@ public class MainActivity extends AppCompatActivity implements UserListener {
 
     @Override
     public void OnClick(UserModel user) {
+
+        String mensaje = user.userData(user);
         String street  = user.getLocation().getStreet().str() + ", " + user.getLocation().getCity();
         String city = user.getLocation().getCity().toString();
         String stct = user.getLocation().getState() + ", " + user.getLocation().getCountry();
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         data.putExtra("stct", stct);
         data.putExtra("phone", phone);
         data.putExtra("picture", picture);
+        data.putExtra("mensaje", mensaje);
         data.putExtra("latitude", latitude);
         data.putExtra("longitude", longitude);
         data.putExtra("city", city);

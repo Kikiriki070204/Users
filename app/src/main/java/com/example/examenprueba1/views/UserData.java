@@ -17,9 +17,9 @@ import com.example.examenprueba1.R;
 public class UserData extends AppCompatActivity {
     TextView street, state, phone;
     ImageView img, back;
-    String picture, latitude, longitude, city;
+    String picture, latitude, longitude, city, mensaje;
 
-    LinearLayout ubicacion;
+    LinearLayout ubicacion, contacto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +30,9 @@ public class UserData extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
         ubicacion = findViewById(R.id.ubicacion);
+        contacto = findViewById(R.id.contact);
+
+
 
         Intent i = getIntent();
         street.setText(i.getStringExtra("street"));
@@ -40,17 +43,32 @@ public class UserData extends AppCompatActivity {
         longitude = i.getStringExtra("longitude");
         city = i.getStringExtra("city");
 
-
+        mensaje = i.getStringExtra("mensaje");
 
         ubicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String query = street.getText().toString();
+                String query = street.getText().toString();
                 Log.d("query: ", query);
-            Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude + "?q=" + Uri.encode(query));
+                Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude + "?q=" + Uri.encode(query));
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
+            }
+        });
+
+        contacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, mensaje);
+                intent.setType("text/plain");
+
+                if(intent.resolveActivity(getPackageManager()) != null)
+                {
+                    startActivity(intent);
+                }
             }
         });
 
