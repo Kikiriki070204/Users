@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements UserListener {
             resultViewModel.results(50);
         });
 
+
         resultViewModel.getUsers().observe(this, result -> {
             if (result != null ) {
                 totalUsuarios.addAll(result.getResults());
@@ -92,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements UserListener {
                 message.setVisibility(View.VISIBLE);
 
             }
-
-
         });
 
         recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -144,15 +144,23 @@ public class MainActivity extends AppCompatActivity implements UserListener {
     @Override
     public void OnClick(UserModel user) {
         String street  = user.getLocation().getStreet().str() + ", " + user.getLocation().getCity();
+        String city = user.getLocation().getCity().toString();
         String stct = user.getLocation().getState() + ", " + user.getLocation().getCountry();
         String phone  = user.getPhone().toString();
         String picture  =user.getPicture().getLarge();
+        String latitude  =user.getLocation().getCoordinates().getLatitude().toString();
+        String longitude = user.getLocation().getCoordinates().getLongitude().toString();
+
 
         Intent data = new Intent(getApplicationContext(), UserData.class);
+
         data.putExtra("street", street);
         data.putExtra("stct", stct);
         data.putExtra("phone", phone);
         data.putExtra("picture", picture);
+        data.putExtra("latitude", latitude);
+        data.putExtra("longitude", longitude);
+        data.putExtra("city", city);
         startActivity(data);
     }
 }
