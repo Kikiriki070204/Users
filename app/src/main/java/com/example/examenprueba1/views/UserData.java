@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,7 +13,7 @@ import com.example.examenprueba1.R;
 
 public class UserData extends AppCompatActivity {
     TextView street, state, phone;
-    ImageView img;
+    ImageView img, back;
     String picture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class UserData extends AppCompatActivity {
         state.setText(i.getStringExtra("stct"));
         phone.setText(i.getStringExtra("phone"));
         picture = i.getStringExtra("picture");
+
 
 
         Glide.with(this).load(picture).into(img);
