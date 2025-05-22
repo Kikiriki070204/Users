@@ -29,6 +29,7 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
+        ubicacion = findViewById(R.id.ubicacion);
 
         Intent i = getIntent();
         street.setText(i.getStringExtra("street"));
