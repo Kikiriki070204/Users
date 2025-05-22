@@ -1,5 +1,6 @@
 package com.example.examenprueba1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.examenprueba1.adapters.UserAdapter;
 import com.example.examenprueba1.listeners.UserListener;
@@ -28,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements UserListener {
     Button female_filter, male_filter, reset;
     TextView message;
 
+    private int pastVisibleItems, visibleItemCount, totalItemsCount;
+    private boolean loading = true;
+    private String gender = "default";
+    private LinearLayoutManager myLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,28 +49,41 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         UserAdapter userAdapter = new UserAdapter(new ArrayList<>(), this);
         ViewModelProvider viewModelProvider = new ViewModelProvider(this);
         result_viewmodel resultViewModel = viewModelProvider.get(result_viewmodel.class);
+        myLayoutManager = new LinearLayoutManager(this);
 
         recycler.setAdapter(userAdapter);
-        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setLayoutManager(myLayoutManager);
         recycler.setHasFixedSize(true);
 
-        resultViewModel.results();
+        List <UserModel> totalUsuarios = new ArrayList<>();
+
+        resultViewModel.results(50);
 
         female_filter.setOnClickListener(v -> {
-            resultViewModel.resultsByGender("female");
+            gender = "female";
+            totalUsuarios.clear();
+            userAdapter.update(new ArrayList<>());
+            resultViewModel.resultsByGender(50,"female");
         });
         male_filter.setOnClickListener(v -> {
-            resultViewModel.resultsByGender("male");
+            gender = "male";
+            totalUsuarios.clear();
+            userAdapter.update(new ArrayList<>());
+            resultViewModel.resultsByGender(50,"male");
         });
         reset.setOnClickListener(v -> {
-            resultViewModel.results();
+            gender = "default";
+            totalUsuarios.clear();
+            userAdapter.update(new ArrayList<>());
+            resultViewModel.results(50);
         });
-
 
         resultViewModel.getUsers().observe(this, result -> {
             if (result != null ) {
-                userAdapter.update(result.getResults());
+                totalUsuarios.addAll(result.getResults());
+                userAdapter.update(totalUsuarios);
                 message.setVisibility(View.GONE);
+                loading = true;
             }
             else
             {
@@ -72,7 +92,53 @@ public class MainActivity extends AppCompatActivity implements UserListener {
                 message.setVisibility(View.VISIBLE);
 
             }
+
+
         });
+
+        recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if(dy > 0 )
+                {
+                    visibleItemCount = myLayoutManager.getChildCount();
+                    totalItemsCount = myLayoutManager.getItemCount();
+                    pastVisibleItems = myLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading)
+                    {
+                        if ((visibleItemCount + pastVisibleItems) >= totalItemsCount)
+                        {
+                            loading = false;
+                            Toast.makeText(MainActivity.this, "Haz llegado al final, cargando...", Toast.LENGTH_SHORT).show();
+                            if(gender.equals("default"))
+                            {
+                                resultViewModel.results(10);
+
+                                Log.d("CANTIDAD", "Total items: " + totalItemsCount);
+
+                            }
+                            else
+                            {
+                                resultViewModel.resultsByGender(10, gender);
+
+                                Log.d("CANTIDAD POR GENERO", "Total items: " + totalItemsCount);
+
+                            }
+                        }
+                    }
+                }
+            }
+
+        });
+
     }
 
     @Override
