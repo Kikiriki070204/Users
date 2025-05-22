@@ -15,14 +15,14 @@ public class result_viewmodel extends ViewModel {
          public LiveData<Result> getUsers() {
                 return resultModel;
          }
-        public void results() {
-        resultRepo.getResults(null).observeForever(result -> {
+        public void results(Integer results) {
+        resultRepo.getResults(results, null).observeForever(result -> {
         resultModel.setValue(result);
         });
         }
 
-        public void resultsByGender(String gender){
-            resultRepo.getResults(gender).observeForever(result -> {
+        public void resultsByGender(Integer results, String gender){
+            resultRepo.getResults(results,gender).observeForever(result -> {
                 resultModel.setValue(result);
             });
         }

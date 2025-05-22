@@ -18,7 +18,7 @@ public class ResultRepo {
 public Retrofit retrofit;
 void setRetrofit(){retrofit=request.getRetrofit();}
 
-    public MutableLiveData<Result> getResults(String gender)
+    public MutableLiveData<Result> getResults(Integer results, String gender)
     {
         setRetrofit();
         Call<Result> resultCall;
@@ -31,7 +31,7 @@ void setRetrofit(){retrofit=request.getRetrofit();}
         else
         {
             users_request usersRequest  = retrofit.create(users_request.class);
-            resultCall = usersRequest.getResults();
+            resultCall = usersRequest.getResults(50);
         }
 
 
