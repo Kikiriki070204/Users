@@ -38,7 +38,6 @@ public class UserData extends AppCompatActivity {
                 getOnBackPressedDispatcher().onBackPressed();
             }
         });
-
         Glide.with(this).load(picture).into(img);
 
     }
