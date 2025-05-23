@@ -33,6 +33,7 @@ public class UserData extends AppCompatActivity {
         state = findViewById(R.id.stct);
         phone = findViewById(R.id.phone);
         img  = findViewById(R.id.image);
+        back = findViewById(R.id.back);
         ubicacion = findViewById(R.id.ubicacion);
         contacto = findViewById(R.id.contact);
 
@@ -114,6 +115,13 @@ public class UserData extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getOnBackPressedDispatcher().onBackPressed();
             }
         });
 
