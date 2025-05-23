@@ -150,6 +150,8 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         String stct = user.getLocation().getState() + ", " + user.getLocation().getCountry();
         String phone  = user.getPhone().toString();
         String picture  =user.getPicture().getLarge();
+        String username = user.getLogin().getUsername();
+        String password = user.getLogin().getPassword();
         String latitude  =user.getLocation().getCoordinates().getLatitude().toString();
         String longitude = user.getLocation().getCoordinates().getLongitude().toString();
 
@@ -164,6 +166,8 @@ public class MainActivity extends AppCompatActivity implements UserListener {
         data.putExtra("latitude", latitude);
         data.putExtra("longitude", longitude);
         data.putExtra("city", city);
+        data.putExtra("username", username);
+        data.putExtra("password", password);
         startActivity(data);
     }
 }

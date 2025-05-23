@@ -8,18 +8,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.examenprueba1.R;
 
 public class UserData extends AppCompatActivity {
-    TextView street, state, phone;
+    TextView street, state, phone, error_username, error_password;
     ImageView img, back;
-    String picture, latitude, longitude, city, mensaje;
-
+    String picture, latitude, longitude, city, mensaje, username_data, password_data;
+    EditText username, password;
     LinearLayout ubicacion, contacto;
+    Button verify;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,11 @@ public class UserData extends AppCompatActivity {
         ubicacion = findViewById(R.id.ubicacion);
         contacto = findViewById(R.id.contact);
 
+        username = findViewById(R.id.edit_username);
+        password = findViewById(R.id.edit_password);
+        verify = findViewById(R.id.verify);
+        error_username = findViewById(R.id.error_username);
+        error_password = findViewById(R.id.error_password);
 
 
         Intent i = getIntent();
@@ -44,6 +53,13 @@ public class UserData extends AppCompatActivity {
         city = i.getStringExtra("city");
 
         mensaje = i.getStringExtra("mensaje");
+        username_data = i.getStringExtra("username");
+        password_data = i.getStringExtra("password");
+
+        username.setText(username_data);
+        password.setText(password_data);
+
+
 
         ubicacion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +88,34 @@ public class UserData extends AppCompatActivity {
             }
         });
 
+        verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String entered_username = username.getText().toString();
+                String entered_password = password.getText().toString();
+
+                error_username.setVisibility(View.GONE);
+                error_password.setVisibility(View.GONE);
+
+                if (entered_username.isEmpty()) {
+                    error_username.setVisibility(View.VISIBLE);
+                }
+                if (entered_password.isEmpty()) {
+                    error_password.setVisibility(View.VISIBLE);
+                }
+
+                if(entered_username.equals(username_data) && entered_password.equals(password_data))
+                {
+                    Toast.makeText(UserData.this,"¡Verificación exitosa!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(UserData.this,"¡Error! Los datos de verificación no coinciden", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
 
         Glide.with(this).load(picture).into(img);
 

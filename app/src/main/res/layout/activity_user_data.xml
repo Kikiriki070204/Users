@@ -7,19 +7,24 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:padding="15dp">
+        android:padding="10dp"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Más sobre este usuario:"
+
             android:textStyle="bold"
             android:textSize="27sp"
             android:layout_gravity="center"
@@ -40,155 +45,219 @@
 
             </LinearLayout>
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+                        <LinearLayout
+                            android:id="@+id/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="2dp"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="5dp">
+
+                            <TextView
+                                android:id="@+id/street"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                >
+                            </TextView>
+                            <TextView
+                                android:id="@+id/stct"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                >
+                            </TextView>
+                            <TextView
+                                android:id="@+id/phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textSize="18dp"
+                                >
+                            </TextView>
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="15dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
+
+                <LinearLayout
+                    android:id="@+id/contact"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/rounded"
                     android:padding="5dp">
                     <LinearLayout
-                        android:id="@+id/txt"
-                        android:layout_width="match_parent"
+                        android:id="@+id/share"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="4dp"
                         android:layout_marginTop="2dp"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginBottom="5dp">
+                        android:padding="2dp"
+                        android:layout_toStartOf="@+id/icon"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/street"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/textContact"
                             android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
                             android:layout_marginBottom="2dp"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            >
-                        </TextView>
-                        <TextView
-                            android:id="@+id/stct"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            >
-                        </TextView>
-                        <TextView
-                            android:id="@+id/phone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:textSize="18dp"
-                            >
-                        </TextView>
-
-
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:text="Compartir los datos de este usuario"
+                            ></TextView>
                     </LinearLayout>
-                </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/iconShare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:paddingLeft="14dp"
+                        android:paddingRight="14dp"
+                        android:src="@drawable/baseline_share_24"></ImageView>
+                </LinearLayout>
 
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="15dp">
-         <LinearLayout
-             android:id="@+id/contact"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
-             android:background="@drawable/rounded"
-             android:padding="5dp">
-             <LinearLayout
-             android:id="@+id/share"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="2dp"
-             android:padding="2dp"
-             android:layout_toStartOf="@+id/icon"
-             android:orientation="vertical">
-
-             <TextView
-                 android:id="@+id/textContact"
-                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:layout_marginBottom="2dp"
-                 android:textColor="@color/black"
-                 android:textSize="17sp"
-                 android:text="Compartir los datos de este usuario"
-                 ></TextView>
-         </LinearLayout>
-             <ImageView
-                 android:id="@+id/iconShare"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentRight="true"
-                 android:layout_gravity="center"
-                 android:paddingLeft="14dp"
-                 android:paddingRight="14dp"
-                 android:src="@drawable/baseline_share_24"></ImageView>
-         </LinearLayout>
-
-     </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp">
-            <LinearLayout
-                android:background="@drawable/rounded"
-                android:id="@+id/ubicacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp">
                 <LinearLayout
-                    android:id="@+id/location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:padding="2dp"
-                    android:layout_toStartOf="@+id/icon"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp">
+                    <LinearLayout
+                        android:background="@drawable/rounded"
+                        android:id="@+id/ubicacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+                        <LinearLayout
+                            android:id="@+id/location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:padding="2dp"
+                            android:layout_toStartOf="@+id/icon"
+                            android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/text"
+                            <TextView
+                                android:id="@+id/text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
+                                android:textColor="@color/black"
+                                android:textSize="17sp"
+                                android:text="Ver la ubicación de este usuario"
+                                ></TextView>
+                        </LinearLayout>
+                        <ImageView
+                            android:id="@+id/icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_location_on_24"
+                            android:layout_gravity="center"
+                            android:paddingLeft="14dp"
+                            android:paddingRight="14dp"></ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:hint="Username">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_username"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="30dp"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/error_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="El nombre de usuario es obligatorio"
+                    android:textColor="#FF0000"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextField2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:hint="Password"
+                    app:passwordToggleEnabled="true">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_password"
+                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:textColor="@color/black"
-                        android:textSize="17sp"
-                        android:text="Ver la ubicación de este usuario"
-                        ></TextView>
-                </LinearLayout>
-                <ImageView
-                    android:id="@+id/icon"
+                        android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/error_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="La contraseña es obligatoria"
+                    android:textColor="#FF0000"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/verify"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/baseline_location_on_24"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
                     android:layout_gravity="center"
-                    android:paddingLeft="14dp"
-                    android:paddingRight="14dp"></ImageView>
+                    android:text="Verificar datos">
+                </com.google.android.material.button.MaterialButton>
+
             </LinearLayout>
+
+
         </LinearLayout>
-    </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
