@@ -26,12 +26,12 @@ void setRetrofit(){retrofit=request.getRetrofit();}
         if(gender != null)
         {
             gender_request usersRequest  = retrofit.create(gender_request.class);
-            resultCall = usersRequest.getResults(50, gender);
+            resultCall = usersRequest.getResults(results, gender);
         }
         else
         {
             users_request usersRequest  = retrofit.create(users_request.class);
-            resultCall = usersRequest.getResults(50);
+            resultCall = usersRequest.getResults(results);
         }
 
 
